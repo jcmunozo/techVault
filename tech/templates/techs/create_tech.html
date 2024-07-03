@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1 class="welcome">hola desde tech</h1>
+  <form class="formdjango" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button>
+      Save
+    </button>
+  </form>
+{% endblock %}
+

@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>{{tech.name}}</h1>
+
+{% for feature in features %}
+    <h1> {{feature.name}} </h1>
+{% endfor %}
+
+{% endblock %}

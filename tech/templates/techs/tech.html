@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1>Welcome to Django App</h1>
+
+{% for tech in techs %}
+
+<article>
+  <a href="{% url 'tech_detail' tech.id %}">
+    <h1>{{tech.name}}</h1>
+  </a>
+</article>
+
+{% endfor %}
+
+{% endblock %}
