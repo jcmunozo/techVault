@@ -8,7 +8,7 @@ class Tech(models.Model):
     history = models.TextField(blank=True)
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True, blank=True)
-    documentation = models.TextField(blank=True) #TODO list of links
+    documentation = models.URLField(max_length=50)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
