@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     techs = Tech.objects.all()
-    return render(request, 'index.html', {
+    return render(request, 'home.html', {
         'techs':techs
     })
 
