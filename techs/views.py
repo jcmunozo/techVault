@@ -1,10 +1,14 @@
+#django
 from django.shortcuts import redirect, render, get_object_or_404
-from .forms import Create_new_feature, Create_new_tech
-from .models import Tech, Feature
 from django.contrib.auth.forms import  UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+
+#models
+from .forms import Create_new_tech
+from .models import Tech
+from features.models import Feature
 
 def home(request):
     techs = Tech.objects.all()
@@ -18,23 +22,6 @@ def tech(request):
     return render(request, 'techs/tech.html', {
         'techs':techs
     })
-
-@login_required
-def feature(request):
-    features = Feature.objects.all()
-    return render(request, 'features/feature.html', {
-        'features':features
-    })
-
-@login_required
-def create_feature(request):
-    if request.method == 'GET':
-        return render(request, 'features/create_feature.html',{
-            'form': Create_new_feature()
-        })
-    else:
-        Feature.objects.create(name=request.POST['name'], description=request.POST['description'], tech_id=1)
-        return redirect('feature')
 
 @login_required
 def create_tech(request):

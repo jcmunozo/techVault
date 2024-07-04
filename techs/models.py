@@ -13,12 +13,3 @@ class Tech(models.Model):
 
     def __str__(self):
         return self.name
-
-class Feature(models.Model):
-    name = models.CharField(max_length=20)
-    level = models.CharField(max_length=15)
-    description = models.TextField()
-    tech = models.ForeignKey(Tech, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name + ' - ' + self.tech.name
