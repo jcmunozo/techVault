@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  Tech detail
+{% endblock %}
+
+{% block content %}
+<section>
+  <h1>{{tech.name}}</h1>
+
+  <img
+    class = "image"
+    src="{{ tech.image.url }}" 
+    alt={{ tech.name }}
+  />
+
+  {% for feature in features %}
+    <h1> {{feature.name}} </h1>
+  {% endfor %}
+</section>
+{% endblock %}

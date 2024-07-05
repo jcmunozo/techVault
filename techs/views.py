@@ -17,27 +17,27 @@ def home(request):
     })
 
 @login_required
-def tech(request):
+def techs(request):
     techs = Tech.objects.filter(user=request.user)
-    return render(request, 'techs/tech.html', {
+    return render(request, 'techs/list.html', {
         'techs':techs
     })
 
 @login_required
 def create_tech(request):
     if request.method == 'GET':
-        return render(request, 'techs/create_tech.html',{
+        return render(request, 'techs/create.html',{
             'form': Create_new_tech()
         })
     else:
-        Tech.objects.create(name=request.POST['name'], user=request.user)
-        return redirect('home')
+        Tech.objects.create(name=request.POST['name'],slug=request.POST['slug'], user=request.user)
+        return redirect('techs:home')
 
 @login_required
-def tech_detail(request, id):
-    tech = get_object_or_404(Tech, id=id)
-    features = Feature.objects.filter(tech_id = id)
-    return render(request, 'techs/tech_detail.html',{
+def tech_detail(request, slug):
+    tech = get_object_or_404(Tech, slug=slug)
+    features = Feature.objects.filter(tech_id = tech.id)
+    return render(request, 'techs/detail.html',{
         'tech':tech,
         'features':features
     })
@@ -57,7 +57,7 @@ def signup(request):
                     )
                 user.save()
                 login(request, user)
-                return redirect('home')
+                return redirect('techs:home')
             except:
                 return render(request, 'signup.html', {
                     'form': UserCreationForm,
@@ -72,7 +72,7 @@ def signup(request):
 @login_required
 def signout(request):
     logout(request)
-    return redirect('home')
+    return redirect('techs:home')
 
 def signin(request):
     if request.method == 'GET':
@@ -90,5 +90,5 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('home')
+            return redirect('techs:home')
 

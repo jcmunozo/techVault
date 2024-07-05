@@ -11,7 +11,7 @@
 {% for tech in techs %}
 
 <article>
-  <a href="{% url 'tech_detail' tech.id %}">
+  <a href="{% url 'techs:detail' slug=tech.slug %}">
     <h1>{{tech.name}}</h1>
   </a>
 </article>

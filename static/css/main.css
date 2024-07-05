@@ -121,3 +121,14 @@ h1 {
   margin-top:0;
   text-aling: center;
 }
+
+.image {
+  border-style: solid;
+  border-color: red;
+  display: block;
+  width:100%;
+  border-radius:50%;
+  max-width:400px;
+  object-fit:cover;
+  box-shadow: 14px 14px 20px 0 rgba(20, 20, 20, 0.3);
+}
