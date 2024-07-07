@@ -37,14 +37,14 @@
 	<a href="{% url 'techs:create' %}">Create new tech</a>
       </li>
       <li>
-	<a href="{% url 'techs:logout' %}">Logout</a>
+	<a href="{% url 'users:logout' %}">Logout</a>
       </li>
       {% else %}
       <li>
-	<a href="{% url 'techs:login' %}">Login</a>
+	<a href="{% url 'users:login' %}">Login</a>
       </li>
       <li>
-	<a href="{% url 'techs:signup' %}">Signup</a>
+	<a href="{% url 'users:signup' %}">Signup</a>
       </li>
       {% endif %}
     </ul>
