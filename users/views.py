@@ -20,7 +20,7 @@ def signup(request):
                     )
                 user.save()
                 login(request, user)
-                return redirect('techs:home')
+                return redirect('home')
             except:
                 return render(request, 'users/signup.html', {
                     'form': UserCreationForm,
@@ -35,7 +35,7 @@ def signup(request):
 @login_required
 def signout(request):
     logout(request)
-    return redirect('techs:home')
+    return redirect('home')
 
 def signin(request):
     if request.method == 'GET':
@@ -53,5 +53,5 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('techs:home')
+            return redirect('home')
 

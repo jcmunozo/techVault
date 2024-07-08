@@ -7,11 +7,6 @@ from .forms import Create_new_tech
 from .models import Tech
 from features.models import Feature
 
-def home(request):
-    techs = Tech.objects.all()
-    return render(request, 'home.html', {
-        'techs':techs
-    })
 
 @login_required
 def techs(request):
@@ -28,7 +23,7 @@ def create_tech(request):
         })
     else:
         Tech.objects.create(name=request.POST['name'],slug=request.POST['slug'], user=request.user)
-        return redirect('techs:home')
+        return redirect('home')
 
 @login_required
 def tech_detail(request, slug):
