@@ -8,6 +8,19 @@
 {% for tech in techs %}
   <h1>{{ tech.name }}</h1>
 {% endfor %}
+
+{% if techs.has_previous %}
+  <div>
+    <a href="?page={{ techs.previous_page_number }}">Previous</a>
+  </div>
+{% endif %}
+
+{% if techs.has_next %}
+  <div>
+    <a href="?page={{ techs.next_page_number }}">Next</a>
+  </div>
+{% endif %}
+
 <div class="content-wrapper">
   <h1>Welcome to Django App</h1>
   <p>esto es un parrafo ques quiero que se replique 100</p>
