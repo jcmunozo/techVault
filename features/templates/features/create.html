@@ -4,10 +4,13 @@
   Create feature
 {% endblock %}
 
+{% block search %}
+{% endblock search %}
+
 {% block content %}
 
 <h1>Hi from Feature</h1>
-  <form method="POST">
+<form action="{% url 'features:create' tech_id=tech.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form}}
     <button>

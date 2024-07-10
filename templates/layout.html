@@ -34,9 +34,6 @@
 	<a href="{% url 'features:list' %}">Feature</a>
       </li>
       <li>
-        <a href="{% url 'features:create' %}">create new feature</a>
-      </li>
-      <li>
 	<a href="{% url 'techs:create' %}">Create new tech</a>
       </li>
       <li>
@@ -52,8 +49,19 @@
       {% endif %}
     </ul>
   </nav>
+  
 
   <main>
+    {% if user.is_authenticated %}
+      {% block search %}
+	<div>
+	  <form method="GET">
+	    <input type="text" placeholder="Search ..." name="search" value="{{ request.GET.search }}">
+	    <button type="submit">Buscar</button>
+	  </form>
+	</div>
+      {% endblock search %}
+    {% endif %}
 
     {% block content %}
     {% endblock %}

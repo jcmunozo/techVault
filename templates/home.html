@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+{% for tech in techs %}
+  <h1>{{ tech.name }}</h1>
+{% endfor %}
 <div class="content-wrapper">
   <h1>Welcome to Django App</h1>
   <p>esto es un parrafo ques quiero que se replique 100</p>

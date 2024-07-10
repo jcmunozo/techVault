@@ -5,5 +5,5 @@ app_name = 'features'
 
 urlpatterns = [
     path("features/",views.features, name="list"),
-    path("create_feature/",views.create_feature, name="create"),
+    path("create_feature/<int:tech_id>",views.create_feature, name="create"),
 ]

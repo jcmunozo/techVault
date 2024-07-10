@@ -22,8 +22,12 @@ def create_tech(request):
             'form': Create_new_tech()
         })
     else:
-        Tech.objects.create(name=request.POST['name'],slug=request.POST['slug'], user=request.user)
-        return redirect('home')
+        form = Create_new_tech(request.POST, request.FILES)
+        if form.is_valid():
+            new_feature = form.save(commit=False)
+            new_feature.user = request.user
+            new_feature.save()
+        return redirect('techs:list')
 
 @login_required
 def tech_detail(request, slug):

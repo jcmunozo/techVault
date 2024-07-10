@@ -4,10 +4,13 @@
   Create tech
 {% endblock %}
 
+{% block search %}
+{% endblock search %}
+
 {% block content %}
 
 <h1 class="welcome">hola desde tech</h1>
-  <form class="formdjango" method="POST">
+  <form action="{% url 'techs:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form}}
     <button>

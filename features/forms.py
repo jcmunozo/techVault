@@ -1,5 +1,12 @@
+#django
 from django import forms # difference between ModelForm and form
+#model 
+from . import models
 
-class Create_new_feature(forms.Form):
-    name = forms.CharField(label="Feature's name", max_length=100)
-    description = forms.CharField(label="description", widget=forms.Textarea)
+class Create_new_feature(forms.ModelForm):
+    """Feature model form"""
+    class Meta:
+        """Form settings"""
+
+        model = models.Feature
+        fields = ['name','level','description']
