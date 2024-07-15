@@ -1,15 +1,17 @@
 from django.shortcuts import redirect, render 
-from django.contrib.auth.forms import  UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+
+from .forms import SignUpForm
 
 # Create your views here.
 def signup(request):
 
     if request.method == 'GET':
         return render(request, 'users/signup.html', {
-        'form': UserCreationForm
+        'form': SignUpForm
         })
     else:
         if request.POST['password1'] == request.POST['password2']:
@@ -23,12 +25,12 @@ def signup(request):
                 return redirect('home')
             except:
                 return render(request, 'users/signup.html', {
-                    'form': UserCreationForm,
+                    'form': SignUpForm,
                     'error': 'Username already exist'
                 })
         
         return render(request, 'users/signup.html', {
-            'form': UserCreationForm,
+            'form': SignUpForm,
             'error': 'password do not match'
         })
 

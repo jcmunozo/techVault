@@ -7,8 +7,13 @@ from ckeditor.fields import RichTextField
 from techs.models import Tech
 
 class Feature(models.Model):
+    class Level(models.TextChoices):
+        BASIC = 'BASIC', 'Basic'
+        INTERMEDIATE = 'INTERMEDIATE', 'Intermediate'
+        ADVANCED = 'ADVANCED', 'Advanced'
+
     name = models.CharField("Feature name",max_length=20)
-    level = models.CharField("Feature's level",max_length=15)
+    level = models.CharField(max_length=12, choices=Level.choices, default=Level.BASIC,)
     description = RichTextField("Description")
     tech = models.ForeignKey(Tech, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
