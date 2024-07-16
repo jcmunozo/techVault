@@ -1,0 +1,22 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+  Create tech
+{% endblock %}
+
+{% block search %}
+{% endblock search %}
+
+{% block content %}
+
+<h1 class="welcome">hola desde tech</h1>
+  <form action="#" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button>
+      Save
+    </button>
+  </form>
+{% endblock %}
+

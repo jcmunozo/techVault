@@ -1,12 +1,20 @@
 #django
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.utils.decorators import method_decorator
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
 #models
 from .forms import Create_new_tech
 from .models import Tech
 from features.models import Feature
 
+@method_decorator(login_required, name="dispatch")
+class UpdateTech(UpdateView):
+    model = Tech
+    template_name = 'techs/update.html'
+    form_class = Create_new_tech
+    success_url = reverse_lazy('techs:list')
 
 @login_required
 def techs(request):
@@ -29,6 +37,7 @@ def create_tech(request):
             new_feature.save()
         return redirect('techs:list')
 
+
 @login_required
 def tech_detail(request, slug):
     tech = get_object_or_404(Tech, slug=slug)
@@ -37,4 +46,3 @@ def tech_detail(request, slug):
         'tech':tech,
         'features':features
     })
-

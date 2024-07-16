@@ -12,7 +12,7 @@
 {% for feature in features %}
 
 <h1>{{feature.name}}</h1>
-
+<p>{{ feature.description|safe }}</p>
 {% endfor %}
 
 {% endblock %}

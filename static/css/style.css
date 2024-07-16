@@ -175,3 +175,22 @@ h1 {
 .errorlist li::marker {
     content: '🚨 ';
 }
+/* Estilo personalizado para los bloques de código */
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+/* Estilo general para el contenido */
+.description {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}

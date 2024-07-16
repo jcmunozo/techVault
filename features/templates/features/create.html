@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% load static %}
+
 {% block title %}
   Create feature
 {% endblock %}
@@ -12,7 +14,8 @@
 <h1>Hi from Feature</h1>
 <form action="{% url 'features:create' tech_id=tech.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form}}
+    {{form.media}}
+    {{form.as_p}}
     <button>
       Save
     </button>

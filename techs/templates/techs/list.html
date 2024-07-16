@@ -16,6 +16,7 @@
 <article>
   <a href="{% url 'techs:detail' slug=tech.slug %}">
     <h1>{{tech.name}}</h1>
+    <p>{{ tech.creator }}</p>
   </a>
 </article>
 
