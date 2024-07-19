@@ -1,7 +1,11 @@
+"""Techs Models"""
+#django
 from django.utils.text import slugify
 from django.db import models
-from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+
+#libreries
+from ckeditor.fields import RichTextField
 
 class Tech(models.Model):
     name = models.CharField("Name", max_length=20)

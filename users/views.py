@@ -1,9 +1,12 @@
+"""Users Views"""
+#django
 from django.shortcuts import redirect, render 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
+#users
 from .forms import SignUpForm
 
 # Create your views here.

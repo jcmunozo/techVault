@@ -1,7 +1,13 @@
+"""Techs Admin"""
+#django
 from django.contrib import admin
-from .models import Tech
+
+#libreries
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
+
+#techs
+from .models import Tech
 
 class TechResource(resources.ModelResource):
     class Meta:

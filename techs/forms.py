@@ -1,13 +1,12 @@
-"""Post Tech's"""
-
+"""Techs Forms"""
 #django
-from django import forms # difference between ModelForm and form
+from django import forms
 
-#model 
+#techs 
 from . import models
 
 class Create_new_tech(forms.ModelForm):
-    """Tech's model form"""
+    """Techs model form"""
 
     class Meta:
         """Form settings"""

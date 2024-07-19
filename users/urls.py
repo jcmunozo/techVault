@@ -1,4 +1,8 @@
+"""Users Urls"""
+#django
 from django.urls import path
+
+#users
 from . import views
 
 app_name = 'users'

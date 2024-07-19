@@ -1,12 +1,16 @@
+"""Techs Views"""
 #django
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
-#models
+
+#techs
 from .forms import Create_new_tech
 from .models import Tech
+
+#features
 from features.models import Feature
 
 @method_decorator(login_required, name="dispatch")

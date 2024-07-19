@@ -1,9 +1,12 @@
+"""Features Models"""
 #django
 from django.db import models
 from django.contrib.auth.models import User
+
+#libreries
 from ckeditor.fields import RichTextField
 
-#model
+#techs
 from techs.models import Tech
 
 class Feature(models.Model):
