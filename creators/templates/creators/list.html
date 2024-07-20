@@ -1,18 +1,19 @@
+
 {% extends 'layout.html' %}
 
 {% block title %}
-  Feature
+  Creator
 {% endblock %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-<h1>hola</h1>
-{% for feature in features %}
+<h1>hola desde creators</h1>
+{% for creator in creators %}
 
-<h1>{{ feature.name }}</h1>
-<p>{{ feature.description|safe }}</p>
+<h1>{{ creator.name }}</h1>
+<p>{{ creator.biography|safe }}</p>
 {% endfor %}
 
 {% endblock %}

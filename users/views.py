@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 #users
 from .forms import SignUpForm
 
-# Create your views here.
 def signup(request):
 
     if request.method == 'GET':
