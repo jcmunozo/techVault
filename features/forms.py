@@ -1,9 +1,9 @@
 """Features Forms"""
-#ckeditor
-from ckeditor.widgets import CKEditorWidget
-
 #django
 from django import forms # difference between ModelForm and form
+
+#ckeditor
+from ckeditor.widgets import CKEditorWidget
 
 #features 
 from . import models

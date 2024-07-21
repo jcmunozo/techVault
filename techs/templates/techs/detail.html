@@ -10,7 +10,7 @@
 {% block content %}
 <section>
   <h1>{{tech.name}}</h1>
-  <h1>{{tech.id}}</h1>
+  <h1>{{tech.description|safe}}</h1>
 
   <img
     class = "image"

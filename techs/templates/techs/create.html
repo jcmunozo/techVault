@@ -12,6 +12,7 @@
 <h1 class="welcome">hola desde tech</h1>
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
+    {{form.media}}
     {{form.as_p}}
     <button>
       Save
