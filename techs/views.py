@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 
 #techs
@@ -49,3 +49,10 @@ class DetailTech(DetailView):
     context_object_name='tech'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+@method_decorator(login_required, name="dispatch")
+class DeleteTech(DeleteView):
+    model = Tech
+    success_url="/"
+    context_object_name='tech'
+    template_name = 'techs/delete.html'

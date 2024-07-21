@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block search %}
+{% endblock search %}
+
+{% block title %}
+  Tech
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <p><strong>Do you want to delete the tech {{ tech }}</strong></p>
+  <button type="submit">Confirm</button>
+</form>
+{% endblock %}
