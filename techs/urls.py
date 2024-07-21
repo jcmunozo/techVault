@@ -3,13 +3,13 @@
 from django.urls import path
 
 #techs
-from . import views
+from .views import *
 
 app_name = 'techs'
 
 urlpatterns = [
-    path("techs/",views.techs, name="list"),
-    path("create_tech/",views.create_tech, name="create"),
-    path("techs/<slug:slug>",views.tech_detail, name="detail"),
-    path("update/<slug:slug>",views.UpdateTech.as_view(), name="update"),
+    path("techs/",ListTech.as_view(), name="list"),
+    path("create_tech/",CreateTech.as_view(), name="create"),
+    path("techs/<slug:slug>",DetailTech.as_view(), name="detail"),
+    path("update/<slug:slug>",UpdateTech.as_view(), name="update"),
 ]

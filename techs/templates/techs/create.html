@@ -10,9 +10,9 @@
 {% block content %}
 
 <h1 class="welcome">hola desde tech</h1>
-  <form action="{% url 'techs:create' %}" method="POST" enctype="multipart/form-data">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form}}
+    {{form.as_p}}
     <button>
       Save
     </button>

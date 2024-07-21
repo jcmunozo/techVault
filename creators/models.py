@@ -18,4 +18,4 @@ class Creator(models.Model):
         verbose_name_plural = 'Creators'
 
     def __str__(self):
-       return self.name + ' - ' + self.tech.name
+       return self.name

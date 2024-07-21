@@ -17,7 +17,9 @@
   <a href="{% url 'techs:detail' slug=tech.slug %}">
     <h1>{{tech.name}}</h1>
   </a>
-  <p>{{ tech.creator }}</p>
+  {% for creator in tech.creator.all %}
+    <p>{{ creator.name }}</p>
+  {% endfor %}
 </article>
 
 {% endfor %}

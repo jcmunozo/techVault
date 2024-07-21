@@ -1,9 +1,12 @@
 """Techs Views"""
 #django
+from django.forms.widgets import media_property
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic.edit import UpdateView
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 #techs
@@ -20,33 +23,29 @@ class UpdateTech(UpdateView):
     form_class = Create_new_tech
     success_url = reverse_lazy('techs:list')
 
-@login_required
-def techs(request):
-    techs = Tech.objects.filter(user=request.user)
-    return render(request, 'techs/list.html', {
-        'techs':techs
-    })
+@method_decorator(login_required, name="dispatch")
+class ListTech(ListView):
+    model = Tech
+    paginate_by = 3
+    template_name='techs/list.html'
+    context_object_name='techs'
 
-@login_required
-def create_tech(request):
-    if request.method == 'GET':
-        return render(request, 'techs/create.html',{
-            'form': Create_new_tech()
-        })
-    else:
-        form = Create_new_tech(request.POST, request.FILES)
-        if form.is_valid():
-            new_feature = form.save(commit=False)
-            new_feature.user = request.user
-            new_feature.save()
-        return redirect('techs:list')
+@method_decorator(login_required, name="dispatch")
+class CreateTech(CreateView):
+    model = Tech
+    form_class = Create_new_tech
+    template_name = 'techs/create.html'
+    success_url = reverse_lazy('techs:list')
 
+    def form_valid(self, form):
+        """Add user to context"""
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
-@login_required
-def tech_detail(request, slug):
-    tech = get_object_or_404(Tech, slug=slug)
-    features = Feature.objects.filter(tech_id = tech.id)
-    return render(request, 'techs/detail.html',{
-        'tech':tech,
-        'features':features
-    })
+@method_decorator(login_required, name="dispatch")
+class DetailTech(DetailView):
+    model = Tech
+    template_name = 'techs/detail.html'
+    context_object_name='tech'
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'

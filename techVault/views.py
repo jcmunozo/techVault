@@ -1,24 +1,28 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from techs.models import Tech
-from django.core.paginator import Paginator
 from django.db.models import Q
 
-def home(request):
-    queryset = request.GET.get("search")
-    techs = Tech.objects.all()
-    if queryset:
-        techs = Tech.objects.filter(
-            Q(name__icontains = queryset) |
-                Q(description__icontains = queryset)
-        ).distinct()
+class Home(ListView):
+    model = Tech
+    template_name = 'home.html'
+    context_object_name = 'techs'
+    paginate_by = 2
 
-    paginator = Paginator(techs, 2)
-    page = request.GET.get('page')
-    techs = paginator.get_page(page)
-
-    return render(request, 'home.html', {
-        'techs':techs,
-    })
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get("search")
+        if search_query:
+            queryset = queryset.filter(
+                Q(name__icontains=search_query) |
+                Q(description__icontains=search_query)
+            ).distinct()
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_query']=self.request.GET.get("search","")
+        return context
 
 def about(request):
     return render(request, 'about.html')

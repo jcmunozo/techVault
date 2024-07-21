@@ -13,7 +13,7 @@ from creators.models import Creator
 class Tech(models.Model):
     """Techs model"""
     name = models.CharField("Name", max_length=20)
-    slug = models.SlugField("slug", max_length=20)
+    slug = models.SlugField("slug", unique=True, max_length=20)
     logo = models.ImageField("Logo",default='tech.png', blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
@@ -23,6 +23,7 @@ class Tech(models.Model):
     documentation = models.URLField("Documentation", max_length=50)
 
     class Meta:
+        ordering = ['name']
         verbose_name = 'Tech'
         verbose_name_plural = 'Techs'
     
@@ -31,5 +32,14 @@ class Tech(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = self.generate_unique_slug()
         super().save(*args, **kwargs)
+
+    def generate_unique_slug(self):
+        slug = slugify(self.name.replace('+', 'plus').replace('#', 'sharp'))
+        unique_slug = slug
+        num = 1
+        while Tech.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(slug, num)
+            num += 1
+        return unique_slug

@@ -7,18 +7,28 @@
 {% block content %}
 {% for tech in techs %}
   <h1>{{ tech.name }}</h1>
+{% empty %}
+  <p>No Techs found.</p>
 {% endfor %}
 
-{% if techs.has_previous %}
-  <div>
-    <a href="?page={{ techs.previous_page_number }}">Previous</a>
-  </div>
-{% endif %}
+{% if page_obj.has_other_pages %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">&laquo; Previous</a>
+        {% endif %}
 
-{% if techs.has_next %}
-  <div>
-    <a href="?page={{ techs.next_page_number }}">Next</a>
-  </div>
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="current-page">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">Next &raquo;</a>
+        {% endif %}
+    </div>
 {% endif %}
 
 <div class="content-wrapper">

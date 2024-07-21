@@ -12,3 +12,6 @@ class Create_new_tech(forms.ModelForm):
         """Form settings"""
         model = models.Tech
         fields = ('name','creator','history','description','documentation','logo')
+        widgets = {
+            'creator':forms.SelectMultiple()
+        }
