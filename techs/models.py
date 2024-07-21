@@ -19,6 +19,7 @@ class Tech(models.Model):
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
     creator = models.ManyToManyField(Creator)
     history = RichTextField("History", blank=True)
+    visivility = models.BooleanField(default=False)
     description = RichTextField("description")
     documentation = models.URLField("Documentation", max_length=50)
 
