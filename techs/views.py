@@ -11,6 +11,9 @@ from django.urls import reverse_lazy
 from .forms import Create_new_tech
 from .models import Tech
 
+#features
+from features.models import Feature
+
 @method_decorator(login_required, name="dispatch")
 class UpdateTech(UpdateView):
     model = Tech
@@ -44,6 +47,13 @@ class DetailTech(DetailView):
     context_object_name='tech'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tech = self.object
+        features = Feature.objects.filter(tech=tech)
+        context['features']=features
+        return context
 
 @method_decorator(login_required, name="dispatch")
 class DeleteTech(DeleteView):
