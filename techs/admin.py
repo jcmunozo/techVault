@@ -15,7 +15,7 @@ class TechResource(resources.ModelResource):
 
 class TechAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     search_fields = ['name', 'creator']
-    list_display = ('name',)
+    list_display = ('name', 'user')
     readonly_fields = ("created",)
     resources_class = TechResource
 
