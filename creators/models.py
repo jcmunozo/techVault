@@ -4,14 +4,14 @@ from django.db import models
 from django.contrib.auth.models import User
 
 #libreries
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 class Creator(models.Model):
     """Creators model"""
     name = models.CharField("Creator name",max_length=20)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
-    biography = RichTextField("Biography")
+    biography = CKEditor5Field("Biography")
 
     class Meta:
         verbose_name = 'Creator'

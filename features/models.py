@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 #libreries
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 #techs
 from techs.models import Tech
@@ -21,7 +21,7 @@ class Feature(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.CharField(max_length=12, choices=Level.choices, default=Level.BASIC,)
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
-    description = RichTextField("Description")
+    description = CKEditor5Field("Description")
 
     class Meta:
         verbose_name = 'Feature'

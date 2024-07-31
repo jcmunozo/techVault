@@ -3,6 +3,9 @@
 from django.shortcuts import redirect, render
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.views.generic import DeleteView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 
 #creators
 from .forms import Create_new_creator
@@ -30,3 +33,11 @@ def create_creator(request):
             new_feature.save()
         return redirect('creators:list')
 
+class DeleteCreator(DeleteView):
+    pass
+
+class DetailCreator(DetailView):
+    pass
+
+class UpdateCreator(UpdateView):
+    pass

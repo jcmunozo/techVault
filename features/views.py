@@ -3,6 +3,9 @@
 from django.shortcuts import redirect, render
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.views.generic import DeleteView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 
 #techs
 from techs.models import Tech
@@ -36,3 +39,11 @@ def create_feature(request, tech_id):
             new_feature.save()
         return redirect('features:list')
 
+class DeleteFeature(DeleteView):
+    pass
+
+class DetailFeature(DetailView):
+    pass
+
+class UpdateFeature(UpdateView):
+    pass
