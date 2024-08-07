@@ -11,6 +11,10 @@ from . import models
 class Create_new_feature(forms.ModelForm):
     """Feature model form"""
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["description"].required = False
+
     class Meta:
         """Form settings"""
 
@@ -18,6 +22,6 @@ class Create_new_feature(forms.ModelForm):
         fields = ['name','level','description']
         widgets = {
             'description':CKEditor5Widget(
-                attrs={"class":"django_ckeditor_5"}, config_name="comment"
+                attrs={"class":"django_ckeditor_5"}, config_name="extends"
                 ),
         }

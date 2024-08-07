@@ -21,7 +21,7 @@ class Feature(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     level = models.CharField(max_length=12, choices=Level.choices, default=Level.BASIC,)
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
-    description = CKEditor5Field("Description")
+    description = CKEditor5Field("Description", config_name='extends')
 
     class Meta:
         verbose_name = 'Feature'

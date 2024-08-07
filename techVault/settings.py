@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'techs',
     'django_ckeditor_5',
     'import_export',
+    'django_select2',
     'features'
 ]
 
@@ -135,6 +136,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/login'
 
+CACHES = {
+    "default": {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    },
+    "select2": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# Tell select2 which cache configuration to use:
+SELECT2_CACHE_BACKEND = "select2"
+
 # CKeditor-5 configutation
 customColorPalette = [
         {
@@ -162,7 +180,6 @@ customColorPalette = [
             'label': 'Blue'
         },
     ]
-CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': ['heading', '|', 'bold', 'italic', 'link',
@@ -227,4 +244,3 @@ CKEDITOR_5_CONFIGS = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

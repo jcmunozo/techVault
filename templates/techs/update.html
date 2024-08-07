@@ -5,6 +5,13 @@
   Create tech
 {% endblock %}
 
+{% block style %}
+  {{ form.media.css }}
+  <style>
+      input, select {width: 40%}
+  </style>
+{% endblock %}
+
 {% block search %}
 {% endblock search %}
 
@@ -21,3 +28,8 @@
   </form>
 {% endblock %}
 
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{ form.media.js }}
+  </script>
+{% endblock %}
