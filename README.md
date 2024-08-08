@@ -10,6 +10,8 @@ and check each time that you want.
 
 - [Django](https://docs.djangoproject.com/en/5.0/)
 - [Bootstrap](https://getbootstrap.com/)
+- [Redis](https://redis.io/)
+- [Postgres](https://www.postgresql.org/)
 
 ---
 
