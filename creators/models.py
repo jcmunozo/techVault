@@ -2,6 +2,7 @@
 #django
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 #libreries
 from django_ckeditor_5.fields import CKEditor5Field
@@ -20,3 +21,8 @@ class Creator(models.Model):
 
     def __str__(self):
        return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super(Creator, self).save(*args, **kwargs)   

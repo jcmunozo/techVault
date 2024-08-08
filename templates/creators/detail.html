@@ -1,1 +1,23 @@
-<h1>detail creators</h1>
+{% extends 'layout.html' %}
+
+{% block title %}
+  Creator detail
+{% endblock %}
+
+{% block search %}
+{% endblock search %}
+
+{% block content %}
+<section>
+  <h1>{{creator.name}}</h1>
+
+  <h1>{{creator.biography|safe}}</h1>
+
+  <div>
+    <a href="{% url 'creators:update' creator.slug %}">Update Creator</a>
+  </div>
+  <div>
+    <a href="{% url 'creators:delete' creator.slug %}">Delete Creator</a>
+  </div>
+</section>
+{% endblock %}

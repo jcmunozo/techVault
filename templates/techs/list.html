@@ -11,6 +11,10 @@
 
 <h1>Welcome to Django App</h1>
 
+<li>
+  <a href="{% url 'techs:create' %}">Create new tech</a>
+</li>
+
 {% for tech in techs %}
 
 <article>

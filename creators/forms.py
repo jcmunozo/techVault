@@ -11,6 +11,10 @@ from . import models
 class Create_new_creator(forms.ModelForm):
     """Creator model form"""
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["biography"].required = False
+
     class Meta:
         """Form settings"""
 
@@ -18,6 +22,6 @@ class Create_new_creator(forms.ModelForm):
         fields = ['name','biography']
         widgets = {
             'biography':CKEditor5Widget(
-                attrs={"class":"django_ckeditor_5"}, config_name="comment"
+                attrs={"class":"django_ckeditor_5"}, config_name="extends"
                 ),
         }

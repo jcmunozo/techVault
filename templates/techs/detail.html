@@ -20,6 +20,12 @@
 
   {% for feature in features %}
     <h1> {{feature.name}} </h1>
+    <div>
+      <a href="{% url 'features:update' feature.id %}">Update feature</a>
+    </div>
+    <div>
+      <a href="{% url 'features:delete' feature.id %}">Delete feature</a>
+    </div>
   {% endfor %}
   <div>
     <a href="{% url 'features:create' tech_id=tech.id %}">create new feature</a>

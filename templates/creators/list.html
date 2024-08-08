@@ -1,4 +1,3 @@
-
 {% extends 'layout.html' %}
 
 {% block title %}
@@ -10,10 +9,41 @@
 
 {% block content %}
 <h1>hola desde creators</h1>
+
+<li>
+  <a href="{% url 'creators:create' %}">Add new creator</a>
+</li>
+
 {% for creator in creators %}
 
-<h1>{{ creator.name }}</h1>
-<p>{{ creator.biography|safe }}</p>
+  <a href="{% url 'creators:detail' slug=creator.slug %}">
+    <h1>{{creator.name}}</h1>
+  </a>
+
+  <p>{{ creator.biography|safe }}</p>
+    {% empty %}
+  <p>No Creators found.</p>
+
 {% endfor %}
+
+{% if page_obj.has_other_pages %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">&laquo; Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span class="current-page">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">Next &raquo;</a>
+        {% endif %}
+    </div>
+{% endif %}
 
 {% endblock %}

@@ -30,13 +30,10 @@
       </li>
       {% if user.is_authenticated %}
       <li>
-	<a href="{% url 'techs:list' %}">Tech</a>
+	<a href="{% url 'techs:list' %}">Techs</a>
       </li>
       <li>
-	<a href="{% url 'features:list' %}">Feature</a>
-      </li>
-      <li>
-	<a href="{% url 'techs:create' %}">Create new tech</a>
+	<a href="{% url 'creators:list' %}">Creators</a>
       </li>
       <li>
 	<a href="{% url 'users:logout' %}">Logout</a>

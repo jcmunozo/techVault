@@ -14,12 +14,6 @@ from .models import Tech
 #features
 from features.models import Feature
 
-@method_decorator(login_required, name="dispatch")
-class UpdateTech(UpdateView):
-    model = Tech
-    template_name = 'techs/update.html'
-    form_class = Create_new_tech
-    success_url = reverse_lazy('techs:list')
 
 @method_decorator(login_required, name="dispatch")
 class ListTech(ListView):
@@ -56,8 +50,15 @@ class DetailTech(DetailView):
         return context
 
 @method_decorator(login_required, name="dispatch")
+class UpdateTech(UpdateView):
+    model = Tech
+    template_name = 'techs/update.html'
+    form_class = Create_new_tech
+    success_url = reverse_lazy('techs:list')
+
+@method_decorator(login_required, name="dispatch")
 class DeleteTech(DeleteView):
     model = Tech
-    success_url="/"
+    success_url=reverse_lazy("techs:list")
     context_object_name='tech'
     template_name = 'techs/delete.html'

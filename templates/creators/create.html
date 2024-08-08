@@ -12,7 +12,7 @@
 
 {% block content %}
 
-<h1>Hi from Feature</h1>
+<h1>Hi from creator</h1>
 <form action="{% url 'creators:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.media}}

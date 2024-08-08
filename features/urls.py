@@ -3,14 +3,12 @@
 from django.urls import path
 
 #features
-from . import views
+from .views import *
 
 app_name = 'features'
 
 urlpatterns = [
-    path("features/",views.features, name="list"),
-    path("create_feature/<int:tech_id>",views.create_feature, name="create"),
-    path("delete_feature/<slug:slug>",views.DeleteFeature.as_view(), name="delete"),
-    path("feauture/<slug:slug>",views.DetailFeature.as_view(), name="detail"),
-    path("update_feature/<slug:slug>",views.UpdateFeature.as_view(), name="update"),
+    path("create_feature/<int:tech_id>",CreateFeature.as_view(), name="create"),
+    path("update_feature/<int:pk>",UpdateFeature.as_view(), name="update"),
+    path("delete_feature/<int:pk>",DeleteFeature.as_view(), name="delete"),
 ]
