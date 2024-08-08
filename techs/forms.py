@@ -1,12 +1,12 @@
 """Techs Forms"""
-#django
+# Django
 from django import forms
 
-#libreries
+# CKeditor 5
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django_select2 import forms as s2forms
 
-#techs 
+# Techs 
 from . import models
 
 class CreatorWidget(s2forms.ModelSelect2MultipleWidget):

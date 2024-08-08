@@ -1,5 +1,5 @@
 """Techs Views"""
-#django
+# Django
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
@@ -7,11 +7,11 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 
-#techs
+# Techs
 from .forms import Create_new_tech
 from .models import Tech
 
-#features
+# Features
 from features.models import Feature
 
 

@@ -1,18 +1,13 @@
 """Creators Views"""
-#django
+# Django
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
-from django.shortcuts import redirect, render
-from django.shortcuts import redirect, render, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.views.generic import DeleteView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 
-#creators
+# Creators
 from .forms import Create_new_creator
 from .models import Creator
 

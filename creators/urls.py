@@ -1,9 +1,8 @@
-
 """Creators Urls"""
-#django
+# Django
 from django.urls import path
 
-#creators
+# Creators
 from .views import *
 
 app_name = 'creators'

@@ -1,8 +1,8 @@
 """Techs Urls"""
-#django
+# Django
 from django.urls import path
 
-#techs
+# Techs
 from .views import *
 
 app_name = 'techs'

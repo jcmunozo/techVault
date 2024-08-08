@@ -1,12 +1,12 @@
 """Creators Admin"""
-#django
+# Django
 from django.contrib import admin
 
-#libraries
+# Import Export
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-#creators
+# Creators
 from .models import Creator
 
 class CreatorResource(resources.ModelResource):

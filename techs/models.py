@@ -1,13 +1,13 @@
 """Techs Models"""
-#django
+# Django
 from django.utils.text import slugify
 from django.db import models
 from django.contrib.auth.models import User
 
-#libreries
+# CKeditor 5
 from django_ckeditor_5.fields import CKEditor5Field
 
-#creators
+# Creators
 from creators.models import Creator
 
 class Tech(models.Model):

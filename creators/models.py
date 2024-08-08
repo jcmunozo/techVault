@@ -1,10 +1,10 @@
 """Creators Models"""
-#django
+# Django
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
-#libreries
+# CKeditor 5
 from django_ckeditor_5.fields import CKEditor5Field
 
 class Creator(models.Model):

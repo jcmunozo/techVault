@@ -1,12 +1,12 @@
 """Features Models"""
-#django
+# Django
 from django.db import models
 from django.contrib.auth.models import User
 
-#libreries
+# Libreries
 from django_ckeditor_5.fields import CKEditor5Field
 
-#techs
+# Techs
 from techs.models import Tech
 
 class Feature(models.Model):

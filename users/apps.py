@@ -1,5 +1,5 @@
 """Users Apps"""
-#django
+# Django
 from django.apps import AppConfig
 
 

@@ -1,8 +1,8 @@
 """Features Urls"""
-#django
+# Django
 from django.urls import path
 
-#features
+# Features
 from .views import *
 
 app_name = 'features'

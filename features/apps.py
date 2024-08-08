@@ -1,5 +1,5 @@
 """Features Apps"""
-#django
+# Django
 from django.apps import AppConfig
 
 class FeaturesConfig(AppConfig):

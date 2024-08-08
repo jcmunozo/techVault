@@ -1,11 +1,11 @@
 """Features Forms"""
-#django
-from django import forms # difference between ModelForm and form
+# Django
+from django import forms
 
-#ckeditor
+# Ckeditor
 from django_ckeditor_5.widgets import CKEditor5Widget
 
-#features 
+# Features 
 from . import models
 
 class Create_new_feature(forms.ModelForm):

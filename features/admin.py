@@ -1,12 +1,12 @@
 """Features Admin"""
-#django
+# Django
 from django.contrib import admin
 
-#libraries
+# Import Export
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
-#features
+# Features
 from .models import Feature
 
 class FeatureResource(resources.ModelResource):

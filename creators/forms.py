@@ -1,11 +1,11 @@
 """Creators Forms"""
-#django
-from django import forms # difference between ModelForm and form
+# Django
+from django import forms
 
-#libreries
+# CKeditor 5
 from django_ckeditor_5.widgets import CKEditor5Widget
 
-#creators
+# Creators
 from . import models
 
 class Create_new_creator(forms.ModelForm):

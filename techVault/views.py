@@ -1,3 +1,5 @@
+"""Admin Views"""
+# Django
 from django.shortcuts import render
 from django.views.generic import ListView
 from techs.models import Tech

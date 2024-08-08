@@ -1,17 +1,15 @@
 """Features Views"""
-#django
-from django.shortcuts import redirect, render, get_object_or_404
+# Django
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 
-#techs
+# Techs
 from techs.models import Tech
 
-#features
+# Features
 from .forms import Create_new_feature
 from .models import Feature
 
