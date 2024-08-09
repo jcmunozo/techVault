@@ -10,8 +10,8 @@
 {% block content %}
 
 {{error}}
-
-<div class="container mt-5">
+<div class="auth-background">
+<div class="auth-form-container">
   <form action="/login/" method="POST" class="shadow p-4 rounded bg-light">
     {% csrf_token %}
     
@@ -57,5 +57,6 @@
       <span>Don't have an account? <a href="{% url 'users:signup' %}" class="text-decoration-none">Sign up</a></span>
     </div>
   </form>
+</div>
 </div>
 {% endblock %}
