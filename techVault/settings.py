@@ -31,18 +31,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'creators',
-    'users',
-    'techs',
-    'django_ckeditor_5',
+    
+    # Third Part Apps
     'import_export',
     'django_select2',
+    'django_ckeditor_5',
+    
+    # Local Apps
+    'users',
+    'techs',
+    'creators',
     'features'
 ]
 
