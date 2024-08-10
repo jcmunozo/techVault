@@ -2,21 +2,19 @@
 
 {% block title %}
   Update tech
-{% endblock %}
-
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-
-<h1 class="welcome">hola desde update creator</h1>
-  <form action="#" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.media}}
-    {{form.as_p}}
-    <button>
-      Save
-    </button>
-  </form>
-{% endblock %}
+  <h1 class="welcome">hola desde update creator</h1>
+    <form action="#" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.media}}
+      {{form.as_p}}
+      <button>
+	Save
+      </button>
+    </form>
+{% endblock content %}

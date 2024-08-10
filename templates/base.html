@@ -1,45 +1,41 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en"
-<head>
+  <head>
     <meta charset="UTF-8">
+    <meta name="author" content="jcmunozo">
+    <meta name="description" content="App for save knowledge about techs">
+    <meta name="keywords" content="HTML, CSS, Javascript, Python">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="with=device-width, initial-scale=1.0">
     <title>
-
       {% block title %}
 	Django projects
-      {% endblock %}
-    
+      {% endblock title %}
     </title>
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <!--local css-->
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    {% block navbar %}
+     {% include "components/nav.html" %}
+    {% endblock navbar %}   
+    <main>
+      {% if user.is_authenticated %}
+	{% block search %}
+	  {% include "components/search.html" %}
+	{% endblock search %}
+      {% endif %}
+      {% block content %}
+      {% endblock content %}
+    </main>
+    {% block scripts %}
+    {% endblock scripts %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-
-  {% block navbar %}
-  {% include "components/nav.html" %}
-  {% endblock navbar %}
-
-  <main>
-    {% if user.is_authenticated %}
-      {% block search %}
-	<div>
-	  <form method="GET">
-	    <input type="text" placeholder="Search ..." name="search" value="{{ search_query }}">
-	    <button type="submit">Buscar</button>
-	  </form>
-	</div>
-      {% endblock search %}
-    {% endif %}
-
-    {% block content %}
-    {% endblock %}
-  
-  </main>
-  {% block scripts %}
-  {% endblock %}
-</body>
+  </body>
+</html>

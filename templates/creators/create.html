@@ -4,15 +4,14 @@
 
 {% block title %}
   Create creator
-{% endblock %}
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-
-<h1>Hi from creator</h1>
-<form action="{% url 'creators:create' %}" method="POST" enctype="multipart/form-data">
+  <h1>Hi from creator</h1>
+  <form action="{% url 'creators:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.media}}
     {{form.as_p}}
@@ -20,4 +19,4 @@
       Save
     </button>
   </form>
-{% endblock %}
+{% endblock content %}

@@ -2,30 +2,23 @@
 
 {% block title %}
   Creator
-{% endblock %}
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-<h1>hola desde creators</h1>
-
-<li>
-  <a href="{% url 'creators:create' %}">Add new creator</a>
-</li>
-
-{% for creator in creators %}
-
-  <a href="{% url 'creators:detail' slug=creator.slug %}">
-    <h1>{{creator.name}}</h1>
-  </a>
-
-  <p>{{ creator.biography|safe }}</p>
-    {% empty %}
-  <p>No Creators found.</p>
-
-{% endfor %}
-
-{% include "components/pagination.html" %}
-
-{% endblock %}
+  <h1>hola desde creators</h1>
+  <li>
+    <a href="{% url 'creators:create' %}">Add new creator</a>
+  </li>
+  {% for creator in creators %}
+    <a href="{% url 'creators:detail' slug=creator.slug %}">
+      <h1>{{creator.name}}</h1>
+    </a>
+    <p>{{ creator.biography|safe }}</p>
+      {% empty %}
+    <p>No Creators found.</p>
+  {% endfor %}
+  {% include "components/pagination.html" %}
+{% endblock content %}

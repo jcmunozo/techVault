@@ -2,32 +2,25 @@
 
 {% block title %}
   Tech
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
 
 {% block search %}
 {% endblock search %}
-
-<h1>Welcome to Django App</h1>
-
-<li>
-  <a href="{% url 'techs:create' %}">Create new tech</a>
-</li>
-
-{% for tech in techs %}
-
-<article>
-  <a href="{% url 'techs:detail' slug=tech.slug %}">
-    <h1>{{tech.name}}</h1>
-  </a>
-  {% for creator in tech.creator.all %}
-    <p>{{ creator.name }}</p>
+  <h1>Welcome to Django App</h1>
+  <li>
+    <a href="{% url 'techs:create' %}">Create new tech</a>
+  </li>
+  {% for tech in techs %}
+    <article>
+      <a href="{% url 'techs:detail' slug=tech.slug %}">
+	<h1>{{tech.name}}</h1>
+      </a>
+      {% for creator in tech.creator.all %}
+	<p>{{ creator.name }}</p>
+      {% endfor %}
+    </article>
   {% endfor %}
-</article>
-
-{% endfor %}
-
-{% include "components/pagination.html" %}
-
-{% endblock %}
+  {% include "components/pagination.html" %}
+{% endblock content %}

@@ -2,22 +2,22 @@
 
 {% block title %}
   Creator detail
-{% endblock %}
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-<section>
-  <h1>{{creator.name}}</h1>
+  <section>
+    <h1>{{creator.name}}</h1>
 
-  <h1>{{creator.biography|safe}}</h1>
+    <h1>{{creator.biography|safe}}</h1>
 
-  <div>
-    <a href="{% url 'creators:update' creator.slug %}">Update Creator</a>
-  </div>
-  <div>
-    <a href="{% url 'creators:delete' creator.slug %}">Delete Creator</a>
-  </div>
-</section>
-{% endblock %}
+    <div>
+      <a href="{% url 'creators:update' creator.slug %}">Update Creator</a>
+    </div>
+    <div>
+      <a href="{% url 'creators:delete' creator.slug %}">Delete Creator</a>
+    </div>
+  </section>
+{% endblock content %}

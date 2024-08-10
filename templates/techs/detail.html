@@ -2,39 +2,39 @@
 
 {% block title %}
   Tech detail
-{% endblock %}
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-<section>
-  <h1>{{tech.name}}</h1>
-  <h1>{{tech.description|safe}}</h1>
+  <section>
+    <h1>{{tech.name}}</h1>
+    <h1>{{tech.description|safe}}</h1>
 
-  <img
-    class = "image"
-    src="{{ tech.logo.url }}" 
-    alt={{ tech.name }}
-  />
+    <img
+      class = "image"
+      src="{{ tech.logo.url }}" 
+      alt={{ tech.name }}
+    />
 
-  {% for feature in features %}
-    <h1> {{feature.name}} </h1>
+    {% for feature in features %}
+      <h1> {{feature.name}} </h1>
+      <div>
+	<a href="{% url 'features:update' feature.id %}">Update feature</a>
+      </div>
+      <div>
+	<a href="{% url 'features:delete' feature.id %}">Delete feature</a>
+      </div>
+    {% endfor %}
     <div>
-      <a href="{% url 'features:update' feature.id %}">Update feature</a>
+      <a href="{% url 'features:create' tech_id=tech.id %}">create new feature</a>
     </div>
     <div>
-      <a href="{% url 'features:delete' feature.id %}">Delete feature</a>
+      <a href="{% url 'techs:update' tech.slug %}">Update Tech</a>
     </div>
-  {% endfor %}
-  <div>
-    <a href="{% url 'features:create' tech_id=tech.id %}">create new feature</a>
-  </div>
-  <div>
-    <a href="{% url 'techs:update' tech.slug %}">Update Tech</a>
-  </div>
-  <div>
-    <a href="{% url 'techs:delete' tech.slug %}">Delete Tech</a>
-  </div>
-</section>
-{% endblock %}
+    <div>
+      <a href="{% url 'techs:delete' tech.slug %}">Delete Tech</a>
+    </div>
+  </section>
+{% endblock content %}

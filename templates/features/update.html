@@ -2,20 +2,19 @@
 
 {% block title %}
   Update Feature
-{% endblock %}
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-
-<h1 class="welcome">hola desde update feature</h1>
-  <form action="#" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.media}}
-    {{form.as_p}}
-    <button>
-      Save
-    </button>
-  </form>
-{% endblock %}
+  <h1 class="welcome">hola desde update feature</h1>
+    <form action="#" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.media}}
+      {{form.as_p}}
+      <button>
+	Save
+      </button>
+    </form>
+{% endblock content %}

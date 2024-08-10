@@ -2,33 +2,32 @@
 
 {% block title %}
   Create tech
-{% endblock %}
+{% endblock title %}
 
 {% block style %}
   {{ form.media.css }}
   <style>
       input, select {width: 40%}
   </style>
-{% endblock %}
+{% endblock style %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-
-<h1 class="welcome">hola desde tech</h1>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.media}}
-    {{form.as_p}}
-    <button>
-      Save
-    </button>
-  </form>
-{% endblock %}
+  <h1 class="welcome">hola desde tech</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.media}}
+      {{form.as_p}}
+      <button>
+	Save
+      </button>
+    </form>
+{% endblock content %}
 
 {% block scripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {{ form.media.js }}
   </script>
-{% endblock %}
+{% endblock scripts %}
