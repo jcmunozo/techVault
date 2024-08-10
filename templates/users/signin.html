@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
   Login
 {% endblock title %}
+
+{% block navbar %}
+{% endblock navbar %}
 
 {% block search %}
 {% endblock search %}
@@ -11,11 +16,12 @@
   {{error}}
   <div class="auth-background">
   <div class="auth-form-container">
-    <form action="/login/" method="POST" class="shadow p-4 rounded bg-light">
+    <form method="POST" class="shadow p-4 rounded bg-light">
       {% csrf_token %}
-      
-      <h4 class="text-center mb-4">Login</h4>
-
+      <a class="navbar-brand d-flex flex-column align-items-center" href="{% url 'home' %}">
+	<img src="{% static 'img/logo.png' %}" class="img-fluid rounded m" style="max-width: 20%;">
+	<h4 class="mt-2">Login</h4>
+      </a>
       <div class="mb-3">
 	<label for="id_username" class="form-label">Username</label>
 	<input 
