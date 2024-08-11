@@ -13,7 +13,6 @@
 {% endblock search %}
 
 {% block content %}
-  {{error}}
   <div class="auth-background">
   <div class="auth-form-container">
     <form method="POST" class="shadow p-4 rounded bg-light">
@@ -22,6 +21,11 @@
 	<img src="{% static 'img/logo.png' %}" class="img-fluid rounded m" style="max-width: 20%;">
 	<h4 class="mt-2">Login</h4>
       </a>
+      {% if error %}
+	<p class="alert alert-danger">
+	  {{error}}
+	</p>
+      {% endif %}
       <div class="mb-3">
 	<label for="id_username" class="form-label">Username</label>
 	<input 

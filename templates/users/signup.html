@@ -11,8 +11,6 @@
 {% block search %}
 {% endblock search %}
 
-{{error}}
-
 {% block content %}
   <div class="auth-background">
   <div class="container">
@@ -26,6 +24,12 @@
 	    <form class="bg-light" method="POST">
 	      {% csrf_token %}
 	      
+	      {% if error %}
+		<p class="alert alert-danger">
+		  {{error}}
+		</p>
+	      {% endif %}
+
 	      <div class="mb-3">
 		<label for="id_username" class="form-label">Username</label>
 		{{ form.username }}
