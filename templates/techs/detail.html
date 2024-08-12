@@ -8,33 +8,36 @@
 {% endblock search %}
 
 {% block content %}
-  <section>
-    <h1>{{tech.name}}</h1>
-    <h1>{{tech.description|safe}}</h1>
-
-    <img
-      class = "image"
-      src="{{ tech.logo.url }}" 
-      alt={{ tech.name }}
-    />
-
-    {% for feature in features %}
-      <h1> {{feature.name}} </h1>
-      <div>
-	<a href="{% url 'features:update' feature.id %}">Update feature</a>
-      </div>
-      <div>
-	<a href="{% url 'features:delete' feature.id %}">Delete feature</a>
-      </div>
-    {% endfor %}
-    <div>
-      <a href="{% url 'features:create' tech_id=tech.id %}">create new feature</a>
-    </div>
-    <div>
-      <a href="{% url 'techs:update' tech.slug %}">Update Tech</a>
-    </div>
-    <div>
-      <a href="{% url 'techs:delete' tech.slug %}">Delete Tech</a>
-    </div>
-  </section>
+  <div class="container">
+      <article class="blog-post">
+	  <div class="row align-items-center">
+	    <div class="col-md-6">
+	      <h1 class="blog-post-title mb-0">{{ tech.name }}</h1>
+	    </div>
+	    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+	      <a href="{% url 'features:create' tech_id=tech.id %}" class="btn btn-sm btn-success me-2">Create new feature</a>
+	      <a href="{% url 'techs:update' tech.slug %}" class="btn btn-sm btn-secondary me-2">Update</a>
+	      <a href="{% url 'techs:delete' tech.slug %}" class="btn btn-sm btn-danger">Delete</a>
+	    </div>
+	  </div>
+	  <img src="{{ tech.logo.url }}" alt="{{ tech.name }}" class="img-fluid mb-3">
+	  <div class="blog-post-content">
+	      {{ tech.description|safe }}
+	  </div>
+	  {% for feature in features %}
+	    <div class="row align-items-center">
+	    <div class="col-md-6">
+	      <h1 class="blog-post-title mb-0">{{ feature.name }}</h1>
+	    </div>
+	    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+	      <a href="{% url 'features:update' feature.id %}" class="btn btn-sm btn-secondary">Update feature</a>
+	      <a href="{% url 'features:delete' feature.id %}" class="btn btn-sm btn-danger">Delete feature</a>
+	    </div>
+	  </div>
+	  <div class="blog-post-content">
+	      {{ feature.description|safe }}
+	  </div>
+	  {% endfor %}
+      </article>
+  </div>
 {% endblock content %}

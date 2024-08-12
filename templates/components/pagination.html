@@ -1,6 +1,6 @@
 {% if page_obj.has_other_pages %}
 <nav aria-label="Page navigation" class="d-flex justify-content-center">
-  <ul class="pagination">
+  <ul class="pagination mt-4">
     {% if page_obj.has_previous %}
       <li class="page-item">
         <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" aria-label="Previous">

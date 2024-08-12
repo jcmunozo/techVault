@@ -3,6 +3,7 @@
 }
 
 .navbar-vt .nav-link {
+    text-align: center;
     color: #ffffff;
 }
 
@@ -44,9 +45,51 @@
     align-items: center;
 }
 
+.main-background {
+    background: #227655;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+}
+
 .auth-form-container {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+}
+.accordion {
+    --bs-accordion-bg: #227655; /* Main background color */
+    --bs-accordion-active-bg: #1b5b42; /* Slightly darker shade for active state */
+    --bs-accordion-btn-bg: #227655; /* Button background */
+    --bs-accordion-btn-color: #f7f7f8; /* White text for the button */
+    --bs-accordion-active-color: #f7f7f8; /* White text for active state */
+    --bs-accordion-btn-focus-border-color: #1b5b42; /* Slightly darker border when focused */
+    --bs-accordion-border-color: #1b5b42; /* Border color */
+}
+
+.accordion-button {
+    color: var(--bs-accordion-btn-color);
+    background-color: var(--bs-accordion-btn-bg);
+    border: 1px solid var(--bs-accordion-border-color);
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-active-color);
+    background-color: var(--bs-accordion-active-bg);
+}
+
+.accordion-button:focus {
+    border-color: var(--bs-accordion-btn-focus-border-color);
+    box-shadow: 0 0 0 0.25rem rgba(34, 118, 85, 0.25);
+}
+
+.accordion-item {
+    background-color: var(--bs-accordion-bg);
+    border: 1px solid var(--bs-accordion-border-color);
+}
+
+.accordion-body {
+    background-color: #c4d6ab; /* White background for the content */
+    color: #000000; /* Black text for better readability */
 }

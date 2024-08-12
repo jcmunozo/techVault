@@ -7,7 +7,7 @@
     <meta name="description" content="App for save knowledge about techs">
     <meta name="keywords" content="HTML, CSS, Javascript, Python">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
       {% block title %}
 	Django projects
@@ -15,17 +15,17 @@
     </title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--local css-->
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    {% block navbar %}
-     {% include "components/nav.html" %}
-    {% endblock navbar %}   
-    <main>
+    <main class="main-background">
+      {% block navbar %}
+       {% include "components/nav.html" %}
+      {% endblock navbar %}   
       {% if user.is_authenticated %}
 	{% block search %}
 	  {% include "components/search.html" %}
