@@ -19,7 +19,7 @@ class Create_new_creator(forms.ModelForm):
         """Form settings"""
 
         model = models.Creator
-        fields = ['name','biography']
+        fields = ['name','picture','nationality','description','biography']
         widgets = {
             'biography':CKEditor5Widget(
                 attrs={"class":"django_ckeditor_5"}, config_name="extends"

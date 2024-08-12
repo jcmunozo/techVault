@@ -12,8 +12,11 @@ class Creator(models.Model):
     name = models.CharField("Creator name",max_length=30)
     slug = models.SlugField("slug", unique=True, max_length=35)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    picture = models.ImageField("Creator picture",default='tech.png', blank=True)
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
     biography = CKEditor5Field("Biography")
+    nationality = models.CharField("Creator nacionality", max_length=40, default="world")
+    description = models.TextField("Creator description", default="tech creator")
 
     class Meta:
         verbose_name = 'Creator'
