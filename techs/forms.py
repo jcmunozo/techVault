@@ -9,12 +9,6 @@ from django_select2 import forms as s2forms
 # Techs 
 from . import models
 
-class CreatorWidget(s2forms.ModelSelect2MultipleWidget):
-    # attrs={"class":"form-select"}
-    search_fields = [
-        "name__icontains",
-    ]
-
 class Create_new_tech(forms.ModelForm):
     """Techs model form"""
     def __init__(self, *args, **kwargs):
@@ -29,5 +23,5 @@ class Create_new_tech(forms.ModelForm):
             'history':CKEditor5Widget(
                 attrs={"class":"django_ckeditor_5"}, config_name="extends"
                 ),
-            'creator':CreatorWidget,
+            'creator': s2forms.Select2MultipleWidget(attrs={'class': 'form-control select2'})
         }

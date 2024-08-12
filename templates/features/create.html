@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block header %}
+    {{form.media}}
+{% endblock %}
+
 {% block title %}
   Create feature
 {% endblock title %}
@@ -13,7 +17,6 @@
   <h1>Hi from Feature</h1>
   <form action="{% url 'features:create' tech_id=tech_id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.media}}
     {{form.as_p}}
     <button>
       Save
