@@ -9,22 +9,12 @@
 {% block search %}
 {% endblock search %}
   <div class="container">
-    <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
-      <div class="accordion-item">
-	<h2 class="accordion-header">
-	  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-	    Techs
-	  </button>
-	</h2>
-	<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-	  <div class="accordion-body">
-	    <strong>Techs</strong>, here you will find all "Techs" this is all regarding to the programing languages.
-	    <a href="{% url 'techs:create' %}" class="btn btn-primary btn-sm d-block">Add new Tech</a>
-	  </div>
-	</div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-auto mt-2 ms-2">
+	<a href="{% url 'techs:create' %}" class="btn btn-sm btn-primary me-2">Add new Tech</a>
       </div>
     </div>
-   </di
+  </div>
   <div class="container">
   <div class="row">
       {% for tech in techs %}
@@ -33,7 +23,7 @@
 	      <img src="{{ tech.logo.url }}" class="card-img-top img-fluid object-fit-cover" alt="logo" style="height: 250px;">
 	      <div class="card-body d-flex flex-column">
 		  <h5 class="card-title text-center">{{ tech.name }}</h5>
-		  <p class="card-text mt-2">{{ tech.description|safe }}</p>
+		  <p class="card-text mt-2">{{ tech.description }}</p>
 		  <div class="mt-auto">
 		      <a href="{{ tech.documentation }}" class="btn btn-outline-secondary btn-sm d-block mb-2" target="_blank">Documentation</a>
 		      {% if user.is_authenticated %}

@@ -44,3 +44,6 @@ class Tech(models.Model):
             unique_slug = '{}-{}'.format(slug, num)
             num += 1
         return unique_slug
+    
+    def type_object(self):
+        return 'Tech'

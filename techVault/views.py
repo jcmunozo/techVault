@@ -13,7 +13,7 @@ from creators.models import Creator
 class Home(ListView):
     model = Tech
     template_name = 'app/home.html'
-    context_object_name = 'techs'
+    context_object_name = 'objects'
     paginate_by = 3
 
     def get_queryset(self):

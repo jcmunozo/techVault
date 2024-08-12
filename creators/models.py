@@ -29,3 +29,6 @@ class Creator(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Creator, self).save(*args, **kwargs)   
+
+    def type_object(self):
+        return 'Creator'
