@@ -24,4 +24,11 @@ class Create_new_feature(forms.ModelForm):
             'description':CKEditor5Widget(
                 attrs={"class":"django_ckeditor_5"}, config_name="extends"
                 ),
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter creator name'
+            }),
+            'level': forms.Select(attrs={
+                'class': 'form-select'
+            })
         }

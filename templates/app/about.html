@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
   About
@@ -8,8 +9,19 @@
 {% endblock search %}
 
 {% block content %}
-  <div class="container">
-    <h1>About</h1>
-    <p>this app is for evaluate and save all the knowledge that I have regarding to a tech</p>
-  </div>
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <img src="{% static 'img/logo.png' %}" alt="jcmunozo logo" class="img-fluid rounded-circle shadow-lg">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h2 class="display-4 mb-4">About Us</h2>
+                    <p class="lead mb-4">I am a passionate developer dedicated to creating innovative solutions.</p>
+                    <p class="mb-4">My mission is to deliver high-quality products and services that exceed my' expectations. With years of experience and a commitment to excellence, I'm reaching the perfect balance, and beautiful software.</p>
+                    <a href="https://github.com/jcmunozo" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Learn More on my github</a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

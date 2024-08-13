@@ -23,5 +23,24 @@ class Create_new_tech(forms.ModelForm):
             'history':CKEditor5Widget(
                 attrs={"class":"django_ckeditor_5"}, config_name="extends"
                 ),
-            'creator': s2forms.Select2MultipleWidget(attrs={'class': 'form-control select2'})
+            'creator': s2forms.Select2MultipleWidget(attrs={'class': 'form-control select2'}),
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter tech name'
+            }),
+            'logo': forms.ClearableFileInput(attrs={
+                'class': 'form-control-file'
+            }),
+            'visibility': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3,
+                'placeholder': 'Enter a brief description'
+            }),
+            'documentation': forms.URLInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter a valid URL'
+            })
         }

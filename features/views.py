@@ -18,7 +18,10 @@ class CreateFeature(CreateView):
     model = Feature
     form_class = Create_new_feature
     template_name = 'features/create.html'
-    success_url = reverse_lazy('techs:list')
+
+    def get_success_url(self):
+        tech = self.object.tech
+        return reverse_lazy('techs:detail', kwargs={'slug': tech.slug})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

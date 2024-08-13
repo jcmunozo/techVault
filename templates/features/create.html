@@ -14,12 +14,17 @@
 {% endblock search %}
 
 {% block content %}
-  <h1>Hi from Feature</h1>
+  <h1 class="text-center">Create Feature</h1>
+  <div class="container">
   <form action="{% url 'features:create' tech_id=tech_id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <button>
-      Save
-    </button>
+    <div class="d-grid gap-2">
+      <button class="btn btn-success mt-3 mb-3">
+	Save
+      </button>
+      <a href="{% url "techs:list" %}" class="btn btn-primary mb-3">Cancel</a>
+    </div>
   </form>
+  </div>
 {% endblock content %}
