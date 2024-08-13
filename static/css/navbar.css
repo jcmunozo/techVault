@@ -1,3 +1,5 @@
+/* navbar styles */
+
 .navbar-vt {
     background-color: #19192e;
 }
@@ -34,6 +36,7 @@
   margin-right: 10px;
 }
 
+/* background for login and singup */
 .auth-background {
     background-image: url('../img/back.jpg');
     background-size: cover;
@@ -45,15 +48,6 @@
     align-items: center;
 }
 
-.main-background {
-    background: #227655;
-    min-height: 100vh; 
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
 .auth-form-container {
     background-color: rgba(255, 255, 255, 0.1);
     padding: 2rem;
@@ -61,6 +55,12 @@
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-input, select{
-  width: 40%
+/* main background */
+.main-background {
+    background: #227655;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }

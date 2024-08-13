@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-  Create creator
+   Creator
 {% endblock title %}
 
 {% block search %}
@@ -11,7 +11,7 @@
 
 {% block content %}
   <div class= "container">
-  <h1>Create creator</h1>
+  <h1 class="text-center">Create creator</h1>
   <form action="{% url 'creators:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.media}}

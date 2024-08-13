@@ -20,10 +20,13 @@ class Create_new_tech(forms.ModelForm):
         model = models.Tech
         fields = ('name','creator','history','description','documentation','logo', 'visibility')
         widgets = {
-            'history':CKEditor5Widget(
-                attrs={"class":"django_ckeditor_5"}, config_name="extends"
-                ),
-            'creator': s2forms.Select2MultipleWidget(attrs={'class': 'form-control select2'}),
+            'history':CKEditor5Widget(attrs={
+                'class':'django_ckeditor_5',
+                'placeholder': 'Enter the history of this tech'
+            }, config_name='extends'),
+            'creator': s2forms.Select2MultipleWidget(attrs={
+                'class': 'form-control select2'
+            }),
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Enter tech name'

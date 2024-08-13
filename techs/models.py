@@ -20,7 +20,7 @@ class Tech(models.Model):
     creator = models.ManyToManyField(Creator)
     history = CKEditor5Field("History", config_name='extends')
     visibility = models.BooleanField(default=False)
-    description = models.TextField("description", max_length=60)
+    description = models.TextField("description", max_length=150)
     documentation = models.URLField("Documentation", max_length=50)
 
     class Meta:

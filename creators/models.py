@@ -15,8 +15,8 @@ class Creator(models.Model):
     picture = models.ImageField("Creator picture",default='tech.png', blank=True)
     created = models.DateTimeField("Created", auto_now_add=True, blank=True)
     biography = CKEditor5Field("Biography")
-    nationality = models.CharField("Creator nacionality", max_length=40, default="world")
-    description = models.TextField("Creator description", default="tech creator")
+    nationality = models.CharField("Creator nacionality", max_length=40)
+    description = models.TextField("Creator description", max_length=100)
 
     class Meta:
         verbose_name = 'Creator'

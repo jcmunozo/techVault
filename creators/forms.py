@@ -21,9 +21,10 @@ class Create_new_creator(forms.ModelForm):
         model = models.Creator
         fields = ['name','nationality','description','biography','picture']
         widgets = {
-            'biography':CKEditor5Widget(
-                attrs={"class":"django_ckeditor_5"}, config_name="extends"
-                ),
+            'biography':CKEditor5Widget(attrs={
+                'class':'django_ckeditor_5',
+                'placeholder': 'Enter the creator biography'
+            }, config_name='extends'),
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Enter creator name'
