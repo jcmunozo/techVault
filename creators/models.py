@@ -19,6 +19,7 @@ class Creator(models.Model):
     description = models.TextField("Creator description", max_length=100)
 
     class Meta:
+        ordering = ['name']
         verbose_name = 'Creator'
         verbose_name_plural = 'Creators'
 
