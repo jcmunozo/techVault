@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="kh-c">
+      <rect width="64" height="64" fill="#fff"/>
+      <!-- keyhole as a terminal prompt  >_ -->
+      <polyline points="28,36 33,40.5 28,45" stroke="#000" stroke-width="2.6"
+                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="35" y="43" width="5" height="2.6" rx="1" fill="#000"/>
+    </mask>
+  </defs>
+  <path d="M22 31 V24 a10 10 0 0 1 20 0 V31" stroke="#E8A33D" stroke-width="5" stroke-linecap="round"/>
+  <rect x="14" y="29" width="36" height="28" rx="7" fill="#E8A33D" mask="url(#kh-c)"/>
+</svg>
