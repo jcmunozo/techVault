@@ -270,20 +270,37 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: var(--bg-soft);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  /* subtle spotlight so contained logos sit on a soft backdrop */
+  background: radial-gradient(120% 120% at 50% 38%, var(--surface-2), var(--bg-soft) 72%);
 }
+/* Default (tech logos): small, centered showcase — capped so they never dominate */
 .tv-card__media img {
+  max-width: 70%;
+  max-height: 74%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tv-card:hover .tv-card__media img { transform: scale(1.06); }
+
+/* Creator photos fill the entire frame instead of floating */
+.tv-card--creator .tv-card__media { padding: 0; background: var(--bg-soft); }
+.tv-card--creator .tv-card__media img {
+  max-width: none;
+  max-height: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.tv-card:hover .tv-card__media img { transform: scale(1.05); }
-.tv-card__media::after {
+.tv-card--creator .tv-card__media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(14, 13, 12, 0.7) 100%);
+  background: linear-gradient(180deg, transparent 45%, rgba(14, 13, 12, 0.65) 100%);
 }
 
 .tv-card__body {
@@ -345,7 +362,6 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--accent-2-soft);
   color: var(--accent-2);
 }
-.tv-tag::before { content: "▍"; opacity: 0.8; }
 
 /* Level badges (features) */
 .tv-level {
