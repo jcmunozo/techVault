@@ -1,25 +1,33 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Creator
+  Edit {{ creator.name }} — TechVault
 {% endblock title %}
+
+{% block header %}
+  {{ form.media }}
+{% endblock header %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
   <div class="container">
-  <h1 class="text-center">Update Creator</h1>
-    <form action="#" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{form.media}}
-      {{form.as_p}}
-      <div class="d-grid gap-2">
-	<button class="btn btn-success mt-3 mb-3">
-	  Save
-	</button>
-      <a href="{% url "creators:detail" creator.slug %}" class="btn btn-primary mb-3">Cancel</a>
+    <div class="tv-pagehead">
+      <div>
+	<span class="tv-eyebrow">Editing</span>
+	<h1>{{ creator.name }}</h1>
       </div>
-    </form>
+    </div>
+    <div class="tv-formcard">
+      <form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div class="d-flex gap-2 mt-4">
+	  <button type="submit" class="btn btn-primary">Save changes</button>
+	  <a href="{% url 'creators:detail' creator.slug %}" class="btn btn-secondary">Cancel</a>
+	</div>
+      </form>
+    </div>
   </div>
 {% endblock content %}

@@ -2,29 +2,34 @@
 
 {% load static %}
 
-{% block header %}
-    {{form.media}}
-{% endblock %}
-
 {% block title %}
-  Feature
+  New feature — TechVault
 {% endblock title %}
+
+{% block header %}
+  {{ form.media }}
+{% endblock header %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-  <h1 class="text-center">Create Feature</h1>
   <div class="container">
-  <form action="{% url 'features:create' tech_id=tech_id %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <div class="d-grid gap-2">
-      <button class="btn btn-success mt-3 mb-3">
-	Save
-      </button>
-      <a href="{% url "techs:list" %}" class="btn btn-primary mb-3">Cancel</a>
+    <div class="tv-pagehead">
+      <div>
+	<span class="tv-eyebrow">Document a concept</span>
+	<h1>New feature</h1>
+      </div>
     </div>
-  </form>
+    <div class="tv-formcard">
+      <form action="{% url 'features:create' tech_id=tech_id %}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div class="d-flex gap-2 mt-4">
+	  <button type="submit" class="btn btn-primary">Save feature</button>
+	  <a href="{% url 'techs:list' %}" class="btn btn-secondary">Cancel</a>
+	</div>
+      </form>
+    </div>
   </div>
 {% endblock content %}

@@ -2,26 +2,56 @@
 {% load static %}
 
 {% block title %}
-  About
-{% endblock title%}
+  About — TechVault
+{% endblock title %}
 
 {% block search %}
 {% endblock search %}
 
 {% block content %}
-    <section class="about-section py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <img src="{% static 'img/logo.png' %}" alt="jcmunozo logo" class="img-fluid rounded-circle shadow-lg">
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <h2 class="display-4 mb-4">About Us</h2>
-                    <p class="lead mb-4">I am a passionate developer dedicated to creating innovative solutions.</p>
-                    <p class="mb-4">My mission is to deliver high-quality products and services that exceed my' expectations. With years of experience and a commitment to excellence, I'm reaching the perfect balance, and beautiful software.</p>
-                    <a href="https://github.com/jcmunozo" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Learn More on my github</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="container">
+    <div class="tv-detail-hero">
+      <div>
+	<span class="tv-eyebrow">About the project</span>
+	<h1>A vault for everything<br>you learn as you build.</h1>
+	<p class="tv-byline mt-3" style="line-height:1.7">
+	  TechVault is a personal knowledge base for developers. Catalog the
+	  technologies you use, the people who created them, and the features
+	  worth remembering — so the next time you forget how a loop, a function
+	  or a quirk works, it's one search away.
+	</p>
+	<div class="tv-actions mt-4">
+	  <a href="https://github.com/jcmunozo" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+	  <a href="{% url 'home' %}" class="btn btn-secondary">Back home</a>
+	</div>
+      </div>
+      <div class="tv-detail-hero__media tv-detail-hero__media--logo">
+	<img src="{% static 'img/logo.png' %}" class="tv-logo" alt="TechVault logo">
+      </div>
+    </div>
+
+    <div class="row g-4 mt-1 mb-5">
+      <div class="col-md-4">
+	<div class="tv-feature h-100">
+	  <span class="tv-eyebrow">01</span>
+	  <h3 class="mt-2">Archive techs</h3>
+	  <p style="color:var(--muted);margin:0">Store each technology with its history, documentation link and logo.</p>
+	</div>
+      </div>
+      <div class="col-md-4">
+	<div class="tv-feature h-100">
+	  <span class="tv-eyebrow">02</span>
+	  <h3 class="mt-2">Credit creators</h3>
+	  <p style="color:var(--muted);margin:0">Keep track of the people behind the tools and their backgrounds.</p>
+	</div>
+      </div>
+      <div class="col-md-4">
+	<div class="tv-feature h-100">
+	  <span class="tv-eyebrow">03</span>
+	  <h3 class="mt-2">Capture features</h3>
+	  <p style="color:var(--muted);margin:0">Document concepts by level — basic, intermediate or advanced.</p>
+	</div>
+      </div>
+    </div>
+  </section>
 {% endblock content %}

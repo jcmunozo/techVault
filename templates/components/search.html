@@ -1,6 +1,10 @@
-<div>
-  <form method="GET" class="search-container">
-    <input type="text" name="search" class="search-input" placeholder="Search tech and creators..." value="{{ search_query }}">
+<div class="container">
+  <form method="GET" class="search-container" role="search">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    <input type="text" name="search" class="search-input" placeholder="search techs and creators…" value="{{ search_query }}" aria-label="Search">
     <button type="submit" class="search-button">Search</button>
   </form>
 </div>

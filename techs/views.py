@@ -6,6 +6,7 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 # Techs
 from .forms import Create_new_tech
@@ -14,9 +15,12 @@ from .models import Tech
 # Features
 from features.models import Feature
 
+# Shared mixins
+from techVault.mixins import OwnerQuerysetMixin
+
 
 @method_decorator(login_required, name="dispatch")
-class ListTech(ListView):
+class ListTech(OwnerQuerysetMixin, ListView):
     model = Tech
     paginate_by = 3
     template_name='techs/list.html'
@@ -42,6 +46,12 @@ class DetailTech(DetailView):
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
 
+    def get_queryset(self):
+        """Allow viewing techs owned by the user or marked public."""
+        return super().get_queryset().filter(
+            Q(user=self.request.user) | Q(visibility=True)
+        )
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         tech = self.object
@@ -50,14 +60,14 @@ class DetailTech(DetailView):
         return context
 
 @method_decorator(login_required, name="dispatch")
-class UpdateTech(UpdateView):
+class UpdateTech(OwnerQuerysetMixin, UpdateView):
     model = Tech
     template_name = 'techs/update.html'
     form_class = Create_new_tech
     success_url = reverse_lazy('techs:list')
 
 @method_decorator(login_required, name="dispatch")
-class DeleteTech(DeleteView):
+class DeleteTech(OwnerQuerysetMixin, DeleteView):
     model = Tech
     success_url=reverse_lazy("techs:list")
     context_object_name='tech'

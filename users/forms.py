@@ -32,9 +32,9 @@ class SignUpForm(UserCreationForm):
         })
         self.fields["password2"].widget.attrs.update({
             'required':'True',
-            'name':'password1',
+            'name':'password2',
             'type':'password',
-            'placeholder':'password',
+            'placeholder':'confirm password',
             'class':'form-control'
         })
 

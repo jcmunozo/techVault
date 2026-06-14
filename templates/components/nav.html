@@ -1,37 +1,37 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg shadow-lg navbar-vt">
+<nav class="navbar navbar-expand-lg navbar-vt">
   <div class="container">
-    <a class="navbar-brand nav-link" href="{% url 'home' %}">
-      <img src="{% static 'img/logo.png' %}" height="45" alt="techvault logo">
-      TechVault
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'img/logo.png' %}" class="tv-logo" height="30" alt="techvault logo">
+      Tech<span class="brand-mark">Vault</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
 	<li class="nav-item">
-	  <a class="nav-link"href="{% url 'home' %}">Home</a>
+	  <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
 	</li>
 	<li class="nav-item">
-	  <a class="nav-link" href="{% url 'about' %}">About</a>
+	  <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
 	</li>
 	{% if user.is_authenticated %}
 	  <li class="nav-item">
-	    <a class="nav-link" href="{% url 'techs:list' %}">Techs</a>
+	    <a class="nav-link {% if request.resolver_match.namespace == 'techs' or request.resolver_match.namespace == 'features' %}active{% endif %}" href="{% url 'techs:list' %}">Techs</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="{% url 'creators:list' %}">Creators</a>
+	    <a class="nav-link {% if request.resolver_match.namespace == 'creators' %}active{% endif %}" href="{% url 'creators:list' %}">Creators</a>
 	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link btn btn-primary text-white ms-2" href="{% url 'users:logout' %}">Logout</a>
+	  <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+	    <a class="btn btn-secondary btn-sm" href="{% url 'users:logout' %}">Logout</a>
 	  </li>
 	{% else %}
 	  <li class="nav-item">
 	    <a class="nav-link" href="{% url 'users:login' %}">Login</a>
 	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link btn btn-primary text-white ms-2" href="{% url 'users:signup' %}">Sign Up</a>
+	  <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+	    <a class="btn btn-primary btn-sm" href="{% url 'users:signup' %}">Sign Up</a>
 	  </li>
 	{% endif %}
       </ul>

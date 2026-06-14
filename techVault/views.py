@@ -17,29 +17,32 @@ class Home(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        search_query = self.request.GET.get("search")
-        
-        if self.request.user.is_authenticated:
-            tech_queryset = Tech.objects.filter(user=self.request.user)
+        user = self.request.user
+
+        # Authenticated users see their own techs/creators; anonymous visitors
+        # only see techs explicitly marked public (visibility=True).
+        if user.is_authenticated:
+            tech_queryset = Tech.objects.filter(user=user)
+            creator_queryset = Creator.objects.filter(user=user)
         else:
-            queryset = Tech.objects.filter(visibility=True)
-        
+            tech_queryset = Tech.objects.filter(visibility=True)
+            creator_queryset = Creator.objects.none()
+
+        search_query = self.request.GET.get("search")
         if search_query:
-            tech_queryset = queryset.filter(
+            techs = tech_queryset.filter(
                 Q(name__icontains=search_query) |
                 Q(description__icontains=search_query)
             ).distinct()
 
-            creator_queryset = Creator.objects.filter(
+            creators = creator_queryset.filter(
                 Q(name__icontains=search_query) |
                 Q(biography__icontains=search_query)
             ).distinct()
 
-            combined_queryset = list(tech_queryset) + list(creator_queryset)
-            return combined_queryset
+            return list(techs) + list(creators)
 
-        return queryset
+        return tech_queryset
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

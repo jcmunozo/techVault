@@ -16,3 +16,6 @@ venv
 *.png
 *.jpg
 *.jpeg
+
+# Claude
+CLAUDE.md

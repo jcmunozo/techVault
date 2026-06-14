@@ -11,8 +11,11 @@ from django.urls import reverse_lazy
 from .forms import Create_new_creator
 from .models import Creator
 
+# Shared mixins
+from techVault.mixins import OwnerQuerysetMixin
+
 @method_decorator(login_required, name="dispatch")
-class ListCreators(ListView):
+class ListCreators(OwnerQuerysetMixin, ListView):
     model = Creator
     paginate_by = 3
     template_name='creators/list.html'
@@ -32,7 +35,7 @@ class CreateCreator(CreateView):
 
 
 @method_decorator(login_required, name="dispatch")
-class DetailCreator(DetailView):
+class DetailCreator(OwnerQuerysetMixin, DetailView):
     model = Creator
     template_name = 'creators/detail.html'
     context_object_name='creator'
@@ -40,14 +43,14 @@ class DetailCreator(DetailView):
     slug_url_kwarg = 'slug'
 
 @method_decorator(login_required, name="dispatch")
-class UpdateCreator(UpdateView):
+class UpdateCreator(OwnerQuerysetMixin, UpdateView):
     model = Creator
     template_name = 'creators/update.html'
     form_class = Create_new_creator
     success_url = reverse_lazy('creators:list')
 
 @method_decorator(login_required, name="dispatch")
-class DeleteCreator(DeleteView):
+class DeleteCreator(OwnerQuerysetMixin, DeleteView):
     model = Creator
     success_url=reverse_lazy("creators:list")
     context_object_name='creator'

@@ -13,6 +13,9 @@ from techs.models import Tech
 from .forms import Create_new_feature
 from .models import Feature
 
+# Shared mixins
+from techVault.mixins import OwnerQuerysetMixin
+
 @method_decorator(login_required, name="dispatch")
 class CreateFeature(CreateView):
     model = Feature
@@ -30,15 +33,15 @@ class CreateFeature(CreateView):
 
     def form_valid(self, form):
         tech_id = self.get_context_data().get('tech_id')
-        if tech_id is not None:
-            tech = get_object_or_404(Tech, id=tech_id)
-            form.instance.tech = tech
+        # Only allow adding features to a tech the current user owns.
+        tech = get_object_or_404(Tech, id=tech_id, user=self.request.user)
+        form.instance.tech = tech
         form.instance.user = self.request.user
         return super().form_valid(form)
 
 
 @method_decorator(login_required, name="dispatch")
-class UpdateFeature(UpdateView):
+class UpdateFeature(OwnerQuerysetMixin, UpdateView):
     model = Feature
     template_name = 'features/update.html'
     form_class = Create_new_feature
@@ -48,7 +51,7 @@ class UpdateFeature(UpdateView):
         return reverse_lazy('techs:detail', kwargs={'slug': tech.slug})
 
 @method_decorator(login_required, name="dispatch")
-class DeleteFeature(DeleteView):
+class DeleteFeature(OwnerQuerysetMixin, DeleteView):
     model = Feature
     context_object_name='feature'
     template_name = 'features/delete.html'

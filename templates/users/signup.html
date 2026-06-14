@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-<h1>Signup</h1>
+
+{% load static %}
 
 {% block title %}
-  Signup
+  Sign up — TechVault
 {% endblock title %}
 
 {% block navbar %}
@@ -13,54 +14,56 @@
 
 {% block content %}
   <div class="auth-background">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-	<div class="card shadow rounded bg-light">
-	  <div class="card-header text-center bg-primary text-white">
-	    <h4>Sign Up</h4>
-	  </div>
-	  <div class="card-body">
-	    <form class="bg-light" method="POST">
-	      {% csrf_token %}
-	      
-	      {% if error %}
-		<p class="alert alert-danger">
-		  {{error}}
-		</p>
-	      {% endif %}
-
-	      <div class="mb-3">
-		<label for="id_username" class="form-label">Username</label>
-		{{ form.username }}
-	      </div>
-
-	      <div class="mb-3">
-		<label for="id_email" class="form-label">Email</label>
-		{{ form.email }}
-	      </div>
-
-	      <div class="mb-3">
-		<label for="id_password1" class="form-label">Password</label>
-		{{ form.password1 }}
-	      </div>
-
-	      <div class="mb-3">
-		<label for="id_password2" class="form-label">Confirm Password</label>
-		{{ form.password2 }}
-	      </div>
-
-	      <div class="d-grid">
-		<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-	      </div>
-	    </form>
-	  </div>
-	  <div class="card-footer text-center">
-	    <small>Already have an account? <a href="/login/" class="text-primary">Login here</a></small>
-	  </div>
+    <div class="auth-form-container">
+      <form method="POST">
+	{% csrf_token %}
+	<div class="text-center mb-4">
+	  <a href="{% url 'home' %}" class="d-inline-flex flex-column align-items-center text-decoration-none">
+	    <img src="{% static 'img/logo.png' %}" class="tv-logo" height="46" alt="TechVault">
+	    <span class="tv-eyebrow mt-3">Begin your archive</span>
+	  </a>
+	  <h4 class="mt-2 mb-0">Create your vault</h4>
 	</div>
-      </div>
+
+	{% if form.errors %}
+	  <div class="alert alert-danger">
+	    {% for field in form %}
+	      {% for error in field.errors %}
+		<div>{{ field.label }}: {{ error }}</div>
+	      {% endfor %}
+	    {% endfor %}
+	    {% for error in form.non_field_errors %}
+	      <div>{{ error }}</div>
+	    {% endfor %}
+	  </div>
+	{% endif %}
+
+	<div class="mb-3">
+	  <label for="id_username" class="form-label">Username</label>
+	  {{ form.username }}
+	</div>
+
+	<div class="mb-3">
+	  <label for="id_email" class="form-label">Email</label>
+	  {{ form.email }}
+	</div>
+
+	<div class="mb-3">
+	  <label for="id_password1" class="form-label">Password</label>
+	  {{ form.password1 }}
+	</div>
+
+	<div class="mb-4">
+	  <label for="id_password2" class="form-label">Confirm password</label>
+	  {{ form.password2 }}
+	</div>
+
+	<button type="submit" class="btn btn-primary w-100">Create account</button>
+
+	<div class="text-center mt-4" style="color:var(--muted)">
+	  <span>Already have an account? <a href="{% url 'users:login' %}">Sign in</a></span>
+	</div>
+      </form>
     </div>
-  </div>
   </div>
 {% endblock content %}
