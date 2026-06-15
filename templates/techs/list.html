@@ -12,9 +12,9 @@
     <a href="{% url 'home' %}" class="tv-back">Back to home</a>
     <div class="tv-pagehead">
       <div>
-	<span class="tv-eyebrow">Your collection</span>
+	<span class="tv-eyebrow">Your stack, archived</span>
 	<h1>Techs</h1>
-	<p>Every technology you've archived, with its history, creators and features.</p>
+	<p>Every language, framework and tool you've mastered — its history, the minds behind it and the features worth never forgetting. Build the reference you wish you'd always had.</p>
       </div>
       <a href="{% url 'techs:create' %}" class="btn btn-primary">+ Add new tech</a>
     </div>
@@ -39,7 +39,7 @@
 	</div>
       {% empty %}
 	<div class="col-12">
-	  <div class="tv-empty"><span>⌗</span>No techs yet — add your first one.</div>
+	  <div class="tv-empty"><span>⌗</span>Your vault is empty. Archive your first technology and start your reference.</div>
 	</div>
       {% endfor %}
     </div>

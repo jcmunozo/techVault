@@ -14,7 +14,7 @@
       <div>
 	<span class="tv-eyebrow">The people behind the tech</span>
 	<h1>Creators</h1>
-	<p>The minds who shaped the technologies in your vault.</p>
+	<p>Behind every tool is a person who imagined it first. Capture who they are, where they came from and the legacy they left in the code you write every day.</p>
       </div>
       <a href="{% url 'creators:create' %}" class="btn btn-primary">+ Add new creator</a>
     </div>
@@ -39,7 +39,7 @@
 	</div>
       {% empty %}
 	<div class="col-12">
-	  <div class="tv-empty"><span>⌗</span>No creators yet — add your first one.</div>
+	  <div class="tv-empty"><span>⌗</span>No creators yet. Add the first mind behind your tech.</div>
 	</div>
       {% endfor %}
     </div>
