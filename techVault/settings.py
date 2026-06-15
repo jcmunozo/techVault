@@ -144,6 +144,17 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Hash static filenames (e.g. techvault.abc123.css) so browsers always fetch
+# the latest version after collectstatic — replaces manual ?v=N cache-busting.
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage',
+    },
+}
+
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
